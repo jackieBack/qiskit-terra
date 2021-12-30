@@ -3971,20 +3971,21 @@ class QuantumCircuit:
         """
         return self.mcx(control_qubits, target_qubit, ancilla_qubits, mode)
 
-    def y(self, qubit: QubitSpecifier) -> InstructionSet:
+    def y(self, qubit: QubitSpecifier, label: Optional[str] = None) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.YGate`.
 
         For the full matrix form of this gate, see the underlying gate documentation.
 
         Args:
             qubit: The qubit(s) to apply the gate to.
+            label: The string label of the gate in the circuit
 
         Returns:
             A handle to the instructions created.
         """
         from .library.standard_gates.y import YGate
 
-        return self.append(YGate(), [qubit], [])
+        return self.append(YGate(label=label), [qubit], [])
 
     def cy(
         self,
@@ -4014,20 +4015,20 @@ class QuantumCircuit:
             CYGate(label=label, ctrl_state=ctrl_state), [control_qubit, target_qubit], []
         )
 
-    def z(self, qubit: QubitSpecifier) -> InstructionSet:
+    def z(self, qubit: QubitSpecifier,  label: Optional[str] = None) -> InstructionSet:
         r"""Apply :class:`~qiskit.circuit.library.ZGate`.
 
         For the full matrix form of this gate, see the underlying gate documentation.
 
         Args:
             qubit: The qubit(s) to apply the gate to.
-
+            label: The string label of the gate in the circuit.
         Returns:
             A handle to the instructions created.
         """
         from .library.standard_gates.z import ZGate
 
-        return self.append(ZGate(), [qubit], [])
+        return self.append(ZGate(label=label), [qubit], [])
 
     def cz(
         self,
